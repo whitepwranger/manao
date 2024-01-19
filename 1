@@ -1,0 +1,3 @@
+0 23 * * 1 /home/eugene/script.sh - запуск каждый понедельник, 	for file in `sudo find ./ -iname '*.php'`; do tar -cfz site.tar.gz $file ; done && sshpass -p '123' scp site.tar.gz bckup_user@server:/backup/site/ 
+0 23 * * * /home/eugene/script.sh - запуск каждый день, 	for file in `find ./site/media/ -mtime -1`; do sshpass -p '123' scp $file bckup_user@server:/backup/media/ ; done
+0 23 * * * /home/eugene/script.sh - запуск каждый день, 	sshpass -p '123' scp ./site/db/site.db bckup_user@server:/backup/site/site.db && sshpass -p '123' ssh bckup_user@server "mv /backup/site/site.db /backup/site/site-`date +%d-%m-%Y`.db"
